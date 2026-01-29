@@ -10,7 +10,19 @@
         script.defer = true
         script.onload = resolve
         script.onerror = reject
-        document.head.appendChild(script)
+  
+        ;(document.head || document.body || document.documentElement)
+          .appendChild(script)
+      })
+    }
+  
+    function whenDOMReady() {
+      return new Promise((resolve) => {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", resolve)
+        } else {
+          resolve()
+        }
       })
     }
   
@@ -18,10 +30,12 @@
       setTimeout(reject, TIMEOUT)
     )
   
-    Promise.race([
-      loadScript(DEV_URL),
-      timeout
-    ])
-      .catch(() => loadScript(PROD_URL))
+    whenDOMReady().then(() => {
+      Promise.race([
+        loadScript(DEV_URL),
+        timeout
+      ])
+        .catch(() => loadScript(PROD_URL))
+    })
   })()
   
