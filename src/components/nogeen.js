@@ -1,0 +1,1 @@
+console.log("nog een test component")
