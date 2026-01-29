@@ -1,6 +1,6 @@
 ;(function () {
     const DEV_URL = "http://127.0.0.1:3000/app.js"
-    const PROD_URL = "https://jouw-project.pages.dev/app.js"
+    const PROD_URL = "https://workflow-test.pages.dev/app.js"
     const TIMEOUT = 300
   
     function loadScript(src) {

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild src/index.js --bundle --minify --outfile=dist/app.js --loader:.css=css",
+    "build": "esbuild src/index.js --bundle --minify --outfile=dist/app.js --loader:.css=css && cp loader/loader.js dist/loader.js",
     "watch": "esbuild src/index.js --bundle --outfile=dist/app.js --loader:.css=css --watch"
   },
   "keywords": [],
